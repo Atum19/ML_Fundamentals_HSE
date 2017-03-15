@@ -1,22 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 21 20:07:47 2016
-
-@author: autorun
-"""
-
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.cross_validation import KFold
 from sklearn.metrics import accuracy_score, precision_score, recall_score, \
  f1_score, roc_auc_score, precision_recall_curve
-from sklearn import cross_validation
 
 
 clasf_data = pd.read_csv('classification.csv', sep=',')
 scor_data = pd.read_csv('scores.csv', sep=',')
-#print clasf_data[0:]
 
 def max_prec_val(prec_rec_vals):
     prec_vals =[]
@@ -37,29 +25,29 @@ for line in matr_data:
     elif line[0] == 0 and line[1] == 0:
         TN += 1
 
-print 'TP: ', TP, ' FP: ', FP, ' FN: ', FN, ' TN: ', TN
-print '************************************************'
+print('TP: ', TP, ' FP: ', FP, ' FN: ', FN, ' TN: ', TN)
+print('************************************************')
 
 y = clasf_data['true']
 x = clasf_data['pred']
-print 'Accuracy: ', accuracy_score(y, x)
-print 'Precision: ', precision_score(y, x)
-print 'Recall: ', recall_score(y, x)
-print 'F-мера: ', f1_score(y, x)
-print '################################################'
+print('Accuracy: ', accuracy_score(y, x))
+print('Precision: ', precision_score(y, x))
+print('Recall: ', recall_score(y, x))
+print('F-мера: ', f1_score(y, x))
+print('################################################')
 
 ys = scor_data['true']
 logreg = scor_data['score_logreg']
 svm = scor_data['score_svm']
 knn = scor_data['score_knn']
 tree = scor_data['score_tree']
-print 'AUC-ROC logreg: ', roc_auc_score(ys, logreg)
-print 'AUC-ROC svm: ', roc_auc_score(ys, svm)
-print 'AUC-ROC knn: ', roc_auc_score(ys, knn)
-print 'AUC-ROC tree: ', roc_auc_score(ys, tree)
-print '================================================'
+print('AUC-ROC logreg: ', roc_auc_score(ys, logreg))
+print('AUC-ROC svm: ', roc_auc_score(ys, svm))
+print('AUC-ROC knn: ', roc_auc_score(ys, knn))
+print('AUC-ROC tree: ', roc_auc_score(ys, tree))
+print('================================================')
 
-print 'max prec logreg: ', max_prec_val(precision_recall_curve(ys, logreg))
-print 'max prec svm: ', max_prec_val(precision_recall_curve(ys, svm))
-print 'max prec knn: ', max_prec_val(precision_recall_curve(ys, knn))
-print 'max prec tree: ', max_prec_val(precision_recall_curve(ys, tree))
+print('max prec logreg: ', max_prec_val(precision_recall_curve(ys, logreg)))
+print('max prec svm: ', max_prec_val(precision_recall_curve(ys, svm)))
+print ('max prec knn: ', max_prec_val(precision_recall_curve(ys, knn)))
+print ('max prec tree: ', max_prec_val(precision_recall_curve(ys, tree)))

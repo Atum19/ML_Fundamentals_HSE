@@ -21,4 +21,4 @@ X_train, X_test, y_train, y_test = train_test_split(xf_trn, yf_trn,
 tree_clf = RandomForestClassifier(n_estimators=8, random_state=241)
 tree_clf.fit(X_train, y_train)
 pred = tree_clf.predict_proba(X_test)
-print(round(log_loss(y_test, pred),2))
+print(round(log_loss(y_test, pred), 2))
