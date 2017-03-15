@@ -33,4 +33,4 @@ print('Survived, percents ', (float(surv) / sm) * 100)
 print('first clas: ', (float(p_clas) / sm) * 100)
 
 result = pearsonr(data['SibSp'], data['Parch'])
-print('Коэффициент корреляции r= %0.3f, уровень значимости p = %0.3f.' % result)
+print('correlation coeff r= %0.3f, level of significance p = %0.3f.' % result)
